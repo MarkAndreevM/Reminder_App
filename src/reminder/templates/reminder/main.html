@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reminder</title>
+    <link type="text/css" href="{% static 'reminder/css/main.css' %}" rel="stylesheet" />
+</head>
+
+<body>
+
+
+    <!--Header start-->
+    <header class="header">
+
+        <div class="wrapper">
+
+            <div class="header__wrapper">
+                <div class="header__logo">
+                    <h1>Reminders</h1>
+                </div>
+
+                <div class="header__add">
+                    <a href="#!" class="header__link"> 
+                        <img src="static/reminder/img/circle1.svg" alt="add entry" class="places__card-pic">
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+    <!--Header end-->
+
+
+
+    <!--Viewing added notifications START-->
+    <main class="main">
+        <section class="intro" id="sign-in">
+            <div class="wrapper_main">
+                {% block content %}
+                    <ul>
+                        {% for i in notifications %}
+                        <h2>{{i.text_reminder}}</h2>
+                        <p>{{i.date_notification}}</p>
+                        <hr>
+                        {% endfor %}
+                    </ul>
+                {% endblock %}
+            </div>
+        </section>
+    </main>
+
+    <!--Viewing added notifications END-->
+
+</body>
+</html>
