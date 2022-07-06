@@ -3,6 +3,8 @@
 
 body {
     margin: 0;
+	padding: 0;
+	box-sizing: border-box;
     background: white;
 }
 
@@ -10,7 +12,7 @@ body {
 /*Header style start*/
 
 .header {
-    margin-top: 100px;
+    margin-top: 50px;
     position: fixed;
     top: 0;
     left: 0;
@@ -57,7 +59,14 @@ h1 {
 /*Header style end*/
 
 
+
+
+
+/*Viewing added notifications START*/
+
+
 .wrapper_main {
+
     overflow: auto;
     max-width: 860px;
     max-height: 500px;
@@ -66,14 +75,117 @@ h1 {
     
 }
 
+
 .intro {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    margin-top: 233px;
+    margin-top: 181px;
     height: 150vh;
     background-size: cover;
     
+}
+
+.info_reminder{
+    padding-left: 30px;
+}
+
+.wrapper_info_reminder{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.wrapper_link_info{
+    padding-bottom: 30px;
+    padding-right: 40px;
+}
+
+
+
+
+
+
+/*Viewing added notifications END*/
+
+
+
+
+
+
+
+
+
+
+
+
+#popup-1 {
+	display: none;
+	background-color: rgba(0,0,0,0.5);
+	position: relative;
+	height: 100vh;
+	width: 100%;
     
+}
+
+
+.search-form__info {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.search-form__field {
+
+    width: 297px; 
+    border: 0;
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+    
+}
+
+
+.add_title_redminer {
+    color: rgb(97, 97, 97);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 150%;
+}
+
+
+/* .add_datetime_link{
+    display: flex;
+    flex-wrap: wrap;
+} */
+
+
+.redminer_add_date {
+    width: 70px;
+    
+    border: 0ch;
+    color: rgb(12, 95, 53);
+
+}
+
+.redminer_add {
+    padding-top: 5px;
+    float: right;
+    text-decoration: none;
+    color: rgb(12, 95, 53);
+
+}
+
+
+.popup-content {
+    position: absolute;
+    border-radius: 10px 10px 10px 10px;
+    margin-left: 550px;
+    height: 120px;
+	padding: 20px;
+	margin-top: 300px;
+	background-color: white;
+	width: 300px;
+	top: 5vh;
+    z-index: 1;
 }

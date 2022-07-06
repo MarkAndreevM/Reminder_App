@@ -1,8 +1,9 @@
 from django.shortcuts import render
 
-from django.views.generic import TemplateView  # класс для отображения странички по шаблону
+from .models import * # Импортируем модели 
 
-from .models import *
+from .forms import NotificationForm  #импортируем формочку
+
 # Create your views here.
 
 
