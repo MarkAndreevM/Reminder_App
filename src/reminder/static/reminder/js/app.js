@@ -31,7 +31,7 @@ closePopup1.addEventListener('click', () => {
 	dayNamesShort: ['вск','пнд','втр','срд','чтв','птн','сбт'],
 	dayNamesMin: ['Вс','Пн','Вт','Ср','Чт','Пт','Сб'],
 	weekHeader: 'Не',
-	dateFormat: 'dd.mm.yy',
+	dateFormat: 'yy-mm-dd',
 	firstDay: 1,
 	isRTL: false,
 	showMonthAfterYear: false,
@@ -51,7 +51,7 @@ $(function(){
 
   /*скрипта времени START*/
 
-$("input[name=time]").clockpicker({       
+$("input[id=clockpicker]").clockpicker({       
 	placement: 'bottom',
 	align: 'left',
 	autoclose: true,
@@ -86,7 +86,7 @@ $("input[name=time]").clockpicker({
 						}
 });
 
-  /*скрипта времени END*/
+  /*скрипта времени START*/
 
 
 
