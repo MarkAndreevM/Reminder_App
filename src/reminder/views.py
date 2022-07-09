@@ -6,6 +6,9 @@ from . forms import NotificationForm
 
 
 def home_page(request):
+
+    # Добавление нового уведомления 
+
     if request.method == 'POST':
         form = NotificationForm(request.POST)
         if form.is_valid():
@@ -17,6 +20,8 @@ def home_page(request):
                 form.add_error(None, 'Ошибка добавления записи')            
     else:
         form = NotificationForm()
+
+        
 
     notifications = Notification.objects.all()
     return render(request, 'reminder/main.html', {'form': form, 'notifications': notifications})

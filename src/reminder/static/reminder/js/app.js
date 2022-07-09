@@ -17,7 +17,8 @@ closePopup1.addEventListener('click', () => {
 
 
 
- /*скрипта календаря START*/
+
+ /*Cкрипта календаря START*/
 
  /* Локализация datepicker */
  $.datepicker.regional['ru'] = {
@@ -86,8 +87,29 @@ $("input[id=clockpicker]").clockpicker({
 						}
 });
 
-  /*скрипта времени START*/
+  /*скрипта времени END*/
 
 
 
   
+
+  /*Скрипта для БУРГЕР МЕНЮ START*/
+
+  const burgerButtons = document.querySelectorAll('.todo-list__burger-item');
+
+  burgerButtons.forEach(button => {
+	  button.addEventListener('click', (event) => {
+		  burgerButtonHandler(event.target)
+	  })
+  })
+  
+  const burgerButtonHandler = (button) => {
+	  const actionsID = button.dataset.id;
+	  const actions = document.querySelector('#todo-list__action_' + actionsID);
+	  actions.classList.toggle('todo-list__actions--visible');
+  }
+
+
+
+
+  /*Скрипта для БУРГЕР МЕНЮ END*/

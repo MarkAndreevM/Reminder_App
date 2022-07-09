@@ -1,6 +1,7 @@
 
 
 
+
 body {
     margin: 0;
 	padding: 0;
@@ -62,7 +63,7 @@ h1 {
 
 
 
-/*Viewing added notifications START*/
+/*Главная страница START*/
 
 
 .wrapper_main {
@@ -96,20 +97,40 @@ h1 {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-end;
+    position: relative;
 }
 
 .wrapper_link_info{
     padding-bottom: 30px;
     padding-right: 40px;
+    position: absolute;
+    right: 0;
+}
+
+/*Главная страница END*/
+
+
+
+
+/*Бургер меню на главной странице START*/
+
+
+.todo-list__actions {
+    display: none;   
+}
+
+.todo-list__actions--visible {
+    display: block;
+}
+
+.todo-list__actions li {
+    list-style-type: none;
 }
 
 
 
 
-
-
-/*Viewing added notifications END*/
-
+/*Бургер меню на главной странице START*/
 
 
 
@@ -118,8 +139,7 @@ h1 {
 
 
 
-
-
+/*Форма добавления уведомления START*/
 
 #popup-1 {
 	display: none;
@@ -168,8 +188,26 @@ h1 {
 
 }
 
+
+.redminer_cancel {
+    font-style: normal;
+    text-decoration: none;
+    border: 0.05rem solid;
+    border-color: black;
+    color: rgb(12, 95, 53);
+    font-size: 18px;
+    border-radius: 10%;
+    padding: 3px 9px 1px 5px;
+    background-color: rgb(243, 240, 240);
+    float: right;
+
+}
+
 .redminer_add {
+    font-style: normal;
+    margin-right: 20px;
     padding-top: 5px;
+    width: 70px;
     float: right;
     text-decoration: none;
     color: rgb(12, 95, 53);
@@ -181,7 +219,7 @@ h1 {
     position: absolute;
     border-radius: 10px 10px 10px 10px;
     margin-left: 550px;
-    height: 120px;
+    height: 220px;
 	padding: 20px;
 	margin-top: 300px;
 	background-color: white;
@@ -189,3 +227,11 @@ h1 {
 	top: 5vh;
     z-index: 1;
 }
+
+
+/*Форма добавления уведомления END*/
+
+
+
+
+
