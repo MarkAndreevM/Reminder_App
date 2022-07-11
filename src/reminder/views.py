@@ -1,3 +1,4 @@
+
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 
@@ -21,10 +22,25 @@ def home_page(request):
     else:
         form = NotificationForm()
 
-        
+
+    # Удаление записи
+
+    if request.method == 'POST':
+        print('kek')
+        if 'Remove' in request.POST:
+            id=request.POST.get('Remove')
+            if id:
+                remove_add = Notification.objects.get(id=id)
+                remove_add.delete()
+                return HttpResponseRedirect('http://127.0.0.1:8000/')
+
+                    
+
+
 
     notifications = Notification.objects.all()
     return render(request, 'reminder/main.html', {'form': form, 'notifications': notifications})
+
 
 
 
