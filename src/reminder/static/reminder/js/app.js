@@ -105,9 +105,14 @@ $("input[id=clockpicker]").clockpicker({
   
   const burgerButtonHandler = (button) => {
 	  const actionsID = button.dataset.id;
+	  console.log(actionsID)
 	  const actions = document.querySelector('#todo-list__action_' + actionsID);
 	  actions.classList.toggle('todo-list__actions--visible');
   }
+
+//   const clickButton = (id) => {
+// 	console.log(id)
+//   }
 
 
 

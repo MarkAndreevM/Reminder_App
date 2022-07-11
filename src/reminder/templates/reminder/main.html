@@ -8,32 +8,7 @@
     <link rel="stylesheet" href="https://snipp.ru/cdn/jqueryui/1.12.1/jquery-ui.min.css">
     
 </head>
-    <!-- <div id="popup-1">
 
-        <div class="popup-content">
-
-            <form action="" method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <p class="search-form__info">
-                    <input type="text" name="Reminder_text" class="search-form__field" placeholder="Введите текст уведомления">
-                    <br>
-                    <input type="text" name="User_mail" class="search-form__field" placeholder="Введите вашу почту">
-                </p>
-                <hr>
-                <div class="add_datetime_link">
-                    <input type="text" name="data" class="redminer_add_date" id="datepicker" placeholder="Set Date   |">
-                    <input type="text" name="time" class="redminer_add_date" id="clockpicker" placeholder="Set Time">
-                    <a href="" id="close-popup-1" class="redminer_add" value="Cancel">
-                        Cancel
-                    </a>
-                    <button type="submit" class="redminer_add">ADD</button>
-                </div>
-            </form>
-
-        </div>
-        
-    </div> -->
 
 <body>
 
@@ -106,13 +81,13 @@
                         
                         <div class="wrapper_link_info">
 
-                            <button data-id="2" class="todo-list__burger-item">
+                            <button type="submit" data-id="{{i.id}}" class="todo-list__burger-item">
                                 <img class="arrow_add_remove_reminder" src="static/reminder/img/arrow.svg" alt="arrow">
                             </button>
 
-                            <nav id="todo-list__actions_" class="todo-list__actions">
-                                <li data-id="" class="action">Edit</li>
-                                <li data-id="" class="action">Remove</li>
+                            <nav id="todo-list__action_{{i.id}}" class="todo-list__actions" >
+                                <li data-id="{{ i.id }}" class="action">Edit</li>
+                                <li data-id="{{ i.id }}" class="action">Remove</li>
                             </nav>
 
                         </div>
