@@ -99,7 +99,7 @@ $("input[id=clockpicker]").clockpicker({
 
   burgerButtons.forEach(button => {
 	  button.addEventListener('click', (event) => {
-		  burgerButtonHandler(event.target)
+			burgerButtonHandler(event.currentTarget)
 	  })
   })
   

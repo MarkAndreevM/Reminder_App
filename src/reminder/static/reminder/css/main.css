@@ -101,11 +101,12 @@ h1 {
 }
 
 .wrapper_link_info{
-    padding-bottom: 30px;
+    padding-bottom: 40px;
     padding-right: 40px;
     position: absolute;
     right: 0;
 }
+
 
 /*Главная страница END*/
 
@@ -116,11 +117,14 @@ h1 {
 
 
 .todo-list__actions {
-    display: none;   
+    display: none;
+    position: relative;
 }
 
 .todo-list__actions--visible {
+    padding-top: 5px;
     display: block;
+    position: absolute;
 }
 
 .todo-list__actions li {
