@@ -85,16 +85,22 @@
                                 <img class="arrow_add_remove_reminder" src="static/reminder/img/arrow.svg" alt="arrow">
                             </button>
 
-                            <form action="" method="post">
 
-                                {% csrf_token %}
+                            <nav id="todo-list__action_{{ i.id }}" class="todo-list__actions">
 
-                                <nav id="todo-list__action_{{ i.id }}" class="todo-list__actions" >
-                                    <button data-id="{{ i.id }}" name="Edit" class="action">Edit</button>
-                                    <button data-id="{{ i.id }}" value="{{ i.id }}" name="Remove" class="action">Remove</button>
-                                </nav>
+                                    <form action="" method="post" >
+                                        {% csrf_token %}
+                                        <button data-id="{{ i.id }}" value="{{ i.id }}" name="Edit" class="action">Edit</button>
+                                    </form>
 
-                            <form>
+                                    <form action="" method="post">
+                                        {% csrf_token %}
+                                        <button data-id="{{ i.id }}" value="{{ i.id }}" name="Remove" class="action">Remove</button>
+                                    </form>
+                            </nav>  
+
+                            
+                                
                         </div>
 
                     </div>

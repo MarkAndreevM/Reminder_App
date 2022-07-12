@@ -17,7 +17,6 @@ closePopup1.addEventListener('click', () => {
 
 
 
-
  /*Cкрипта календаря START*/
 
  /* Локализация datepicker */
@@ -109,11 +108,6 @@ $("input[id=clockpicker]").clockpicker({
 	  const actions = document.querySelector('#todo-list__action_' + actionsID);
 	  actions.classList.toggle('todo-list__actions--visible');
   }
-
-//   const clickButton = (id) => {
-// 	console.log(id)
-//   }
-
 
 
 
