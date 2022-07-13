@@ -17,6 +17,8 @@ closePopup1.addEventListener('click', () => {
 
 
 
+
+
  /*Cкрипта календаря START*/
 
  /* Локализация datepicker */
@@ -44,6 +46,8 @@ $(function(){
 });
 
  /*скрипта календаря END*/
+
+
 
 
 

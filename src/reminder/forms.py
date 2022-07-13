@@ -1,6 +1,5 @@
 
 from django import forms
-from .models import Notification
 import datetime
 
 

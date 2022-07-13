@@ -33,34 +33,26 @@ def home_page(request):
                 remove_add.delete()
                 return HttpResponseRedirect('http://127.0.0.1:8000/')
 
-    
-    # Редактирование записи
-
-    if request.method == 'POST':
-        print('kek')
-        if 'Edit' in request.POST:
-            id=request.POST.get('Edit')
-
-            form = NotificationForm(request.POST)
-            if form.is_valid():
-                try:
-                    Notification.objects.create(**form.cleaned_data)
-                    return HttpResponseRedirect('http://127.0.0.1:8000/')
-                except:
-                    form.add_error(None, 'Ошибка добавления записи')
-
-                # if id:
-                #     remove_add = Notification.objects.get(id=id)
-                #     remove_add.delete()
-                #     return HttpResponseRedirect('http://127.0.0.1:8000/')
-
-                    
-
 
 
     notifications = Notification.objects.all()
     return render(request, 'reminder/main.html', {'form': form, 'notifications': notifications})
 
 
+
+
+
+def update_reminder(request, pk):
+
+    get_article = Notification.objects.get(pk=pk)
+    context = { 
+        'get_article': get_article,
+        'update': True,
+        'notifications': Notification.objects.all(),
+        'form': NotificationForm(),
+        
+    }
+
+    return render(request, 'reminder/main.html', context)
 
 
