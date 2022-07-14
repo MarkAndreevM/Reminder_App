@@ -72,57 +72,42 @@
             <div class="wrapper_main">
                 {% block content %}
 
-                    {% if update %}
-                        <p class="changing_an_entry">Изменение записи</p>
+                    {% for i in notifications %}
 
-                        <form action="" class="form_changing_an_entry" method="post">
+                    <div class="wrapper_info_reminder">
 
-                            {% csrf_token %}
-                            {{ form.as_p }}
-                            <a href="http://127.0.0.1:8000/" class="redminer_cancel" value="Cancel">
-                                Cancel
-                            </a>
-                            <button type="submit" class="redminer_add">ADD</button>
-            
-                        </form>
-
-                    {% else %}
-
-                        {% for i in notifications %}
-
-                        <div class="wrapper_info_reminder">
-
-                            <div class="info_reminder">        
-                                <h2>{{i.text_reminder}}</h2>
-                                <p>{{i.date_notification}} {{i.time_notification}}</p>
-                            </div>
-                            
-                            <div class="wrapper_link_info">
-
-                                <button type="submit" data-id="{{ i.id }}" class="todo-list__burger-item">
-                                    <img class="arrow_add_remove_reminder" src="static/reminder/img/arrow.svg" alt="arrow">
-                                </button>
-
-
-                                <nav id="todo-list__action_{{ i.id }}" class="todo-list__actions">
-
-                                    <a href="{% url 'update_reminder' i.id %}" data-id="{{ i.id }}" value="{{ i.id }}" name="Edit" class="action">Edit</a>
-
-                                    <form action="" method="post">
-                                        {% csrf_token %}
-                                        <button data-id="{{ i.id }}" value="{{ i.id }}" name="Remove" class="action">Remove</button>
-                                    </form>
-                                        
-                                </nav>  
-                                    
-                            </div>
-
+                        <div class="info_reminder">        
+                            <h2>{{i.text_reminder}}</h2>
+                            <p>{{i.date_notification}} {{i.time_notification}}</p>
                         </div>
-                        <hr color="black" size="small">
+                        
+                        <div class="wrapper_link_info">
 
-                        {% endfor %}
+                            <button type="submit" data-id="{{ i.id }}" class="todo-list__burger-item">
+                                <img class="arrow_add_remove_reminder" src="static/reminder/img/arrow.svg" alt="arrow">
+                            </button>
 
-                    {% endif %}
+
+                            <nav id="todo-list__action_{{ i.id }}" class="todo-list__actions">
+                                
+                                
+                                <!-- <button id="open-popup-1" data-id="{{ i.id }}" class="action_edit" value="{{ i.id }}" name="Edit">Edit</button> -->
+                                <a href="{% url 'update_reminder' i.id %}" id="open-popup-1" data-id="{{ i.id }}" class="action_edit" value="{{ i.id }}" name="Edit">Edit</a>
+                                <!-- <a href="#!" data-id="{{ i.id }}" value="{{ i.id }}" name="Edit" class="action">Edit</a> -->
+
+                                <form action="" method="post">
+                                    {% csrf_token %}
+                                    <button data-id="{{ i.id }}" value="{{ i.id }}" name="Remove" class="action">Remove</button>
+                                </form>
+                                    
+                            </nav>  
+                                
+                        </div>
+
+                    </div>
+                    <hr color="black" size="small">
+
+                    {% endfor %}
 
                 {% endblock %}
             </div>

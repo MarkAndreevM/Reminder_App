@@ -1,20 +1,25 @@
 // Скрипт для Popup (формы заполнения уведомления) START
 
-var popup1 = document.getElementById("popup-1")
-var openPopup1 = document.getElementById("open-popup-1")
-var closePopup1 = document.getElementById('close-popup-1')
+// var popup1 = document.getElementById("popup-1")
+// var openPopup1 = document.getElementById("open-popup-1")
+// var closePopup1 = document.getElementById('close-popup-1')
 
-openPopup1.addEventListener('click', () => {
-	popup1.style.display = "block";
-})
+// openPopup1.addEventListener('click', () => {
+// 	popup1.style.display = "block";
+// })
 
-closePopup1.addEventListener('click', () => {
-	popup1.style.display = "none";
-})
+// closePopup1.addEventListener('click', () => {
+// 	popup1.style.display = "none";
+// })
 
 // Скрипт для Popup (формы заполнения уведомления) END
 
+var popup1 = document.getElementById("popup-1")
+var openPopup1 = document.querySelectorAll("[id=open-popup-1]")
+var closePopup1 = document.querySelectorAll("[id=close-popup-1]")
 
+openPopup1.forEach(element => element.addEventListener('click', () => {popup1.style.display = "block";}))
+closePopup1.forEach(element => element.addEventListener('click', () => {popup1.style.display = "none";}))
 
 
 
@@ -116,3 +121,5 @@ $("input[id=clockpicker]").clockpicker({
 
 
   /*Скрипта для БУРГЕР МЕНЮ END*/
+
+  
