@@ -1,6 +1,6 @@
 
 
-from django import forms
+from django.forms import ModelForm, TextInput, DateInput, TimeInput, EmailInput
 import datetime
 from .models import Notification
 
@@ -21,7 +21,37 @@ from .models import Notification
 
 
 
-class NotificationForm(forms.ModelForm):
+class NotificationForm(ModelForm):
     class Meta:
         model = Notification
-        fields = '__all__'
+        fields = ['text_reminder', 'user_mail', 'date_notification', 'time_notification']
+
+        widgets = {
+            "text_reminder": TextInput(attrs={
+                'class': 'search-form__field',
+                'type': 'text',
+                'name': 'Reminder_text',
+                'placeholder': 'Введите текст уведомления'
+            }),
+            "user_mail": EmailInput(attrs={
+                'class': 'search-form__field',
+                'type': 'text',
+                'name': 'User_mail',
+                'placeholder': 'Введите вашу почту'
+            }),
+            "date_notification": DateInput(attrs={
+                'class': 'redminer_add_date',
+                'type': 'text',
+                'name': 'data',
+                'id': 'datepicker',
+                'placeholder': 'Set Date'
+            }),
+            "time_notification": TimeInput(attrs={
+                'class': 'redminer_add_date',
+                'type': 'text',
+                'name': 'time',
+                'id': 'clockpicker',
+                'placeholder': 'Set Time'
+            }),
+
+        }

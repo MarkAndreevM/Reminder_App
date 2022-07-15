@@ -9,7 +9,7 @@ class Notification(models.Model):
         return now  
 
     text_reminder = models.CharField(max_length=255)
-    user_mail = models.EmailField(max_length=60, default='SOME STRING')
+    user_mail = models.EmailField(max_length=60)
     date_creation = models.DateTimeField(auto_now_add=True)
     date_notification = models.DateField(auto_now=False)
     time_notification = models.TimeField(default=default_start_time)
