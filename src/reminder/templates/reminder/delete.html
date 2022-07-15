@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete</title>
+    <link type="text/css" href="{% static 'reminder/css/delete.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://snipp.ru/cdn/jqueryui/1.12.1/jquery-ui.min.css">
+
+</head>
+<body>
+    
+    <div class="form_delete">
+
+        <form action="" method="post">
+
+            {% csrf_token %}
+            {{ form.as_p }}
+            <a href="{% url 'index' %}"  class="redminer_cancel" value="Cancel">
+                Cancel
+            </a>
+            <button name="reminder_edit" type="submit"  class="redminer_add">ADD</button>
+
+        </form>
+
+    </div>
+
+
+
+
+
+
+    <script>
+        /*Cкрипта календаря START*/
+
+        /* Локализация datepicker */
+        $.datepicker.regional['ru'] = {
+            closeText: 'Закрыть',
+            prevText: 'Предыдущий',
+            nextText: 'Следующий',
+            currentText: 'Сегодня',
+            monthNames: ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'],
+            monthNamesShort: ['Янв','Фев','Мар','Апр','Май','Июн','Июл','Авг','Сен','Окт','Ноя','Дек'],
+            dayNames: ['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'],
+            dayNamesShort: ['вск','пнд','втр','срд','чтв','птн','сбт'],
+            dayNamesMin: ['Вс','Пн','Вт','Ср','Чт','Пт','Сб'],
+            weekHeader: 'Не',
+            dateFormat: 'yy-mm-dd',
+            firstDay: 1,
+            isRTL: false,
+            showMonthAfterYear: false,
+            yearSuffix: ''
+        };
+        $.datepicker.setDefaults($.datepicker.regional['ru']);
+
+        $(function(){
+            $("#datepicker").datepicker();
+        });
+
+        /*скрипта календаря END*/
+
+    </script>
+
+
+
+
+    <script>
+
+        /*скрипта времени START*/
+
+        $("input[id=clockpicker]").clockpicker({       
+            placement: 'bottom',
+            align: 'left',
+            autoclose: true,
+            default: 'now',
+            donetext: "Select",
+            init: function() { 
+                                    console.log("colorpicker initiated");
+                                },
+                                beforeShow: function() {
+                                    console.log("before show");
+                                },
+                                afterShow: function() {
+                                    console.log("after show");
+                                },
+                                beforeHide: function() {
+                                    console.log("before hide");
+                                },
+                                afterHide: function() {
+                                    console.log("after hide");
+                                },
+                                beforeHourSelect: function() {
+                                    console.log("before hour selected");
+                                },
+                                afterHourSelect: function() {
+                                    console.log("after hour selected");
+                                },
+                                beforeDone: function() {
+                                    console.log("before done");
+                                },
+                                afterDone: function() {
+                                    console.log("after done");
+                                }
+        });
+
+        /*скрипта времени END*/
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+    <!--Подключение скрипта календаря START-->
+    <script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://snipp.ru/cdn/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <!--Подключение скрипта календаря END-->
+
+
+
+
+    <!--ПОДКЛЮЧЕНИЕ СКРИПТА ВРЕМЕНИ START-->
+    <script src="https://weareoutman.github.io/clockpicker/dist/jquery-clockpicker.min.js"></script>
+    <link rel="stylesheet" href="https://weareoutman.github.io/clockpicker/dist/jquery-clockpicker.min.css"></link>
+    <!--ПОДКЛЮЧЕНИЕ СКРИПТА ВРЕМЕНИ END-->
+
+
+
+    <script type="text/javascript" src="{% static 'reminder/js/app.js' %}"></script>
+
+
+</body>
+</html>

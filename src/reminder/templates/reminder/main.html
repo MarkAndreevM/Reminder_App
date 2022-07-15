@@ -91,7 +91,7 @@
                             <nav id="todo-list__action_{{ i.id }}" class="todo-list__actions">
                                 
                                 <!-- <button id="open-popup-1" data-id="{{ i.id }}" class="action_edit" value="{{ i.id }}" name="Edit">Edit</button> -->
-                                <a href="" id="open-popup-1" data-id="{{ i.id }}" class="action_edit" value="{{ i.id }}" name="Edit">Edit</a>
+                                <a href="{% url 'update_reminder' i.id %}" data-id="{{ i.id }}" class="action_edit" value="{{ i.id }}" name="Edit">Edit</a>
 
                                 <form action="{% url 'delete_reminder' i.id %}" method="DELETE">
                                     {% csrf_token %}

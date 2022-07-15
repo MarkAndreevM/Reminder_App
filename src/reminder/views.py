@@ -53,17 +53,24 @@ def delete_reminder(request, id):
 
 
 
-# def update_reminder(request, pk):
+def update_reminder(request, pk):
 
-#     get_article = Notification.objects.get(pk=pk)
-#     context = { 
-#         'get_article': get_article,
-#         'update': True,
-#         'notifications': Notification.objects.all(),
-#         'form': NotificationForm(),
+
+    get_article = Notification.objects.get(pk=pk)
+
+    if request.method == 'POST':
+        form = NotificationForm(request.POST, instance = get_article)
+        if form.is_valid():
+            form.save()
+
+   
+    context = { 
+        'get_article': get_article,
+        # 'notifications': Notification.objects.all(),
+        'form': NotificationForm( instance = get_article),
         
-#     }
+    }
 
-#     return render(request, 'reminder/main.html', context)
+    return render(request, 'reminder/delete.html', context)
 
 
