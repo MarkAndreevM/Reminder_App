@@ -28,15 +28,7 @@ def home_page(request):
         form = NotificationForm()
         
 
-    # Удаление записи
-
-    # if request.method == 'DELETE':
-    #     # if 'Remove' in request.DELETE:
-    #     id=request.DELETE.get('Remove')
-    #     if id:
-    #         remove_add = Notification.objects.get(id=id)
-    #         remove_add.delete()
-    #         return redirect(resolve_url('index'))
+    
 
 
 
@@ -62,6 +54,7 @@ def update_reminder(request, pk):
         form = NotificationForm(request.POST, instance = get_article)
         if form.is_valid():
             form.save()
+            return redirect(resolve_url('index'))
 
    
     context = { 
@@ -70,7 +63,6 @@ def update_reminder(request, pk):
         'form': NotificationForm( instance = get_article),
         
     }
-
     return render(request, 'reminder/delete.html', context)
 
 
