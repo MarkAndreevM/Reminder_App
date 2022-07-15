@@ -14,12 +14,12 @@
 
 // Скрипт для Popup (формы заполнения уведомления) END
 
-var popup1 = document.getElementById("popup-1")
-var openPopup1 = document.querySelectorAll("[id=open-popup-1]")
-var closePopup1 = document.querySelectorAll("[id=close-popup-1]")
+// var popup1 = document.getElementById("popup-1")
+// var openPopup1 = document.querySelectorAll("[id=open-popup-1]")
+// var closePopup1 = document.querySelectorAll("[id=close-popup-1]")
 
-openPopup1.forEach(element => element.addEventListener('click', () => {popup1.style.display = "block";}))
-closePopup1.forEach(element => element.addEventListener('click', () => {popup1.style.display = "none";}))
+// openPopup1.forEach(element => element.addEventListener('click', () => {popup1.style.display = "block";}))
+// closePopup1.forEach(element => element.addEventListener('click', () => {popup1.style.display = "none";}))
 
 
 
@@ -118,8 +118,15 @@ $("input[id=clockpicker]").clockpicker({
 	  actions.classList.toggle('todo-list__actions--visible');
   }
 
-
-
   /*Скрипта для БУРГЕР МЕНЮ END*/
 
-  
+
+
+var popup1 = document.getElementById("popup-1")
+var openPopup1 = document.querySelectorAll("[id=open-popup-1]")
+var closePopup1 = document.querySelectorAll("[id=close-popup-1]")
+
+openPopup1.forEach(element => element.addEventListener('click', () => {popup1.style.display = "block";}))
+closePopup1.forEach(element => element.addEventListener('click', () => {popup1.style.display = "none";}))
+
+console.log('click')

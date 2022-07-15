@@ -1,6 +1,6 @@
 
 from django.http import HttpResponseRedirect
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, resolve_url
 
 from .models import * # Импортируем модели 
 from . forms import NotificationForm
@@ -16,22 +16,27 @@ def home_page(request):
             # print(form.cleaned_data)
             try:
                 Notification.objects.create(**form.cleaned_data)
-                return HttpResponseRedirect('http://127.0.0.1:8000/')
+                # return HttpResponseRedirect('http://127.0.0.1:8000/')
+                return redirect(resolve_url('index'))
             except:
-                form.add_error(None, 'Ошибка добавления записи')            
+                form.add_error(None, 'Ошибка добавления записи')
+                return redirect(resolve_url('index'))   
+        else:
+            form.add_error(None, 'Ошибка добавления записи')
+            return redirect(resolve_url('index'))          
     else:
         form = NotificationForm()
-
+        
 
     # Удаление записи
 
-    if request.method == 'POST':
-        if 'Remove' in request.POST:
-            id=request.POST.get('Remove')
-            if id:
-                remove_add = Notification.objects.get(id=id)
-                remove_add.delete()
-                return HttpResponseRedirect('http://127.0.0.1:8000/')
+    # if request.method == 'DELETE':
+    #     # if 'Remove' in request.DELETE:
+    #     id=request.DELETE.get('Remove')
+    #     if id:
+    #         remove_add = Notification.objects.get(id=id)
+    #         remove_add.delete()
+    #         return redirect(resolve_url('index'))
 
 
 
@@ -39,20 +44,26 @@ def home_page(request):
     return render(request, 'reminder/main.html', {'form': form, 'notifications': notifications})
 
 
+# Удаление записи
+
+def delete_reminder(request, id):
+    reminder = Notification.objects.get(pk=id)
+    reminder.delete()
+    return redirect(resolve_url('index'))
 
 
 
-def update_reminder(request, pk):
+# def update_reminder(request, pk):
 
-    get_article = Notification.objects.get(pk=pk)
-    context = { 
-        'get_article': get_article,
-        'update': True,
-        'notifications': Notification.objects.all(),
-        'form': NotificationForm(),
+#     get_article = Notification.objects.get(pk=pk)
+#     context = { 
+#         'get_article': get_article,
+#         'update': True,
+#         'notifications': Notification.objects.all(),
+#         'form': NotificationForm(),
         
-    }
+#     }
 
-    return render(request, 'reminder/main.html', context)
+#     return render(request, 'reminder/main.html', context)
 
 

@@ -70,7 +70,7 @@ h1 {
 
     overflow: auto;
     max-width: 860px;
-    max-height: 500px;
+    height: 500px;
     margin: 0 auto;
     border: 1px solid rgb(181, 175, 175)
     
