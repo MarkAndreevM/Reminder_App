@@ -18,7 +18,18 @@ var popup1 = document.getElementById("popup-1")
 var openPopup1 = document.querySelectorAll("[id=open-popup-1]")
 var closePopup1 = document.querySelectorAll("[id=close-popup-1]")
 
-openPopup1.forEach(element => element.addEventListener('click', () => {popup1.style.display = "block";}))
+openPopup1.forEach(element => element.addEventListener('click', (event) => {
+
+	var dataset = event.target.dataset;
+	// debugger;
+	$(popup1).find("[name=text_reminder]").val(dataset.text_reminder);
+	$(popup1).find("[name=user_mail]").val(dataset.user_mail); 
+	$(popup1).find("[name=date_notification]").val(dataset.date_notification); 
+	$(popup1).find("[name=time_notification]").val(dataset.time_notification);
+	  
+	popup1.style.display = "block";
+
+}))
 closePopup1.forEach(element => element.addEventListener('click', () => {popup1.style.display = "none";}))
 
 

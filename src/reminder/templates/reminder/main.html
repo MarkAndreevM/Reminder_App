@@ -90,13 +90,16 @@
 
                             <nav id="todo-list__action_{{ i.id }}" class="todo-list__actions">
                                 
-                                <!-- <button id="open-popup-1" data-id="{{ i.id }}" class="action_edit" value="{{ i.id }}" name="Edit">Edit</button> -->
-                                <a href="{% url 'update_reminder' i.id %}" data-id="{{ i.id }}" class="action_edit" value="{{ i.id }}" name="Edit">Edit</a>
+                                <!-- Изменение уведомления через pop-up (тест, мучения, надежда)-->
+                                <button id="open-popup-1" data-text_reminder="{{i.text_reminder}}" data-user_mail="{{i.user_mail}}" data-date_notification="{{i.date_notification}}" data-time_notification="{{i.time_notification}}" data-id="{{ i.id }}" class="action_edit" value="{{ i.id }}" name="Edit">Edit</button>
+
+                                <!-- Изменение уведомления через отдельную страничку (готово) -->
+                                <!-- <a href="" data-id="{{ i.id }}" class="action_edit" value="{{ i.id }}" name="Edit">Edit</a> --> 
 
                                 <form action="{% url 'delete_reminder' i.id %}" method="DELETE">
                                     {% csrf_token %}
                                     <!-- <button data-id="{{ i.id }}" value="{{ i.id }}" name="Remove" class="action">Remove</button> -->
-                                    <button type="submit" >Remove</button>
+                                    <button type="submit" class="action">Remove</button>
                                 </form>
                                     
                             </nav>  
