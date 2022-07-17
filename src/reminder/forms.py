@@ -24,9 +24,13 @@ from .models import Notification
 class NotificationForm(ModelForm):
     class Meta:
         model = Notification
-        fields = ['text_reminder', 'user_mail', 'date_notification', 'time_notification']
+        fields = ['id', 'text_reminder', 'user_mail', 'date_notification', 'time_notification']
 
         widgets = {
+            "id": TextInput(attrs={
+                'type': 'hidden',
+                'name': 'id'
+            }),
             "text_reminder": TextInput(attrs={
                 'class': 'search-form__field',
                 'type': 'text',

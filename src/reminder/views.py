@@ -40,7 +40,7 @@ def home_page(request):
 
 
 # Изменение уведомления
-def update_reminder(request):
+def update_reminder(request, id):
 
     if request.method == 'POST':
         print('kek')
