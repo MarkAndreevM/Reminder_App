@@ -22,7 +22,7 @@ openPopup1.forEach(element => element.addEventListener('click', (event) => {
 
 	var dataset = event.target.dataset;
 	// debugger;
-	
+	popup1.action = "/api/reminder/" + dataset.id
 	$(popup1).find("[name=text_reminder]").val(dataset.text_reminder);
 	$(popup1).find("[name=user_mail]").val(dataset.user_mail); 
 	$(popup1).find("[name=date_notification]").val(dataset.date_notification); 
