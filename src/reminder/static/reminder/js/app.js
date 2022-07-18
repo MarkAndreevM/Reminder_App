@@ -21,12 +21,13 @@ var closePopup1 = document.querySelectorAll("[id=close-popup-1]")
 openPopup1.forEach(element => element.addEventListener('click', (event) => {
 
 	var dataset = event.target.dataset;
-	// debugger;
-	popup1.action = "/api/reminder/" + dataset.id
+	debugger;
+	// popup1.action = "/api/reminder/" + dataset.id
+	$(popup1).find("form")[0].action = "/api/reminder/" + (dataset.id || "")
 	$(popup1).find("[name=text_reminder]").val(dataset.text_reminder);
 	$(popup1).find("[name=user_mail]").val(dataset.user_mail); 
 	$(popup1).find("[name=date_notification]").val(dataset.date_notification); 
-	$(popup1).find("[name=time_notification]").val(dataset.time_notification);
+	$(popup1).find("[name=time_notification]").val(dataset.time_notification.slice(0,5));
 	
 	popup1.style.display = "block";
 

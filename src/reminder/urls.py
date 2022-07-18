@@ -1,12 +1,14 @@
 from django.contrib import admin
 from django.urls import path
-from .views import home_page, delete_reminder, update_reminder
+from .views import home_page, create_reminder, delete_reminder, update_reminder
 
 # Обновление уведомления (плохой способ через новую страницу) 
 # update_reminder
 
 urlpatterns = [
     path("", home_page, name='index'),
+
+    path("api/reminder/", create_reminder, name='create_reminder'),
     path("api/reminder/<int:id>", update_reminder, name='update_reminder'),
 
 
