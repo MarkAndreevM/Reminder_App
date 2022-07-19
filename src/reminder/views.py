@@ -1,9 +1,13 @@
 
+from distutils.log import info
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render, resolve_url
 
-from .models import * # Импортируем модели 
-from . forms import NotificationForm
+from .models import Notification # Импортируем модели 
+from . forms import NotificationForm # Импортируем форму
+
+# from .service import send
+from .tasks import send_reminder_user_on_email
 
 
 
@@ -50,6 +54,32 @@ def delete_reminder(request, id):
     reminder = Notification.objects.get(pk=id)
     reminder.delete()
     return redirect(resolve_url('index'))
+
+
+
+
+
+
+# Отправка уведомления пользовтелю на почту 
+
+def send_reminder_on_email(form):
+    # form.save()
+    # send_reminder_user_on_email.delay(form.instance.email)
+    # return super().form_valid(form)
+    pass
+
+
+
+# ЗАПУС 3 терминала 
+# 1. Django - python manage.py runserver
+# 2. Celery - celery -A project worker -l info     (project - имя проекта основного)
+# 3. 
+
+
+
+
+
+
 
 
 
