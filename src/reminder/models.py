@@ -15,7 +15,7 @@ class Notification(models.Model):
     time_notification = models.CharField(max_length=16, default=default_start_time)
 
     def __str__(self):
-        return f"Notification: {self.text_reminder}"
+        return f"{self.text_reminder, self.user_mail, self.date_notification, self.time_notification,}"
 
 
 

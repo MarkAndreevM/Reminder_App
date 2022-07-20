@@ -24,13 +24,12 @@ def home_page(request):
     form = NotificationForm()
     notifications = Notification.objects.all().order_by("-id")
 
-    import random
     logger.info("set task for %s", notifications)
     logger.error("ALARM: set task for %s", notifications)
 
-    task_id = send_reminder_on_email((notifications, ))
+    send_mail = send_reminder_on_email(notifications)
 
-    logger.info("New task id %s", task_id)
+    logger.info("New task id %s", send_mail)
 
 
     return render(request, 'reminder/main.html', {'form': form, 'notifications': notifications})
