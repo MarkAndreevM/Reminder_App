@@ -1,3 +1,6 @@
+import logging
+
+from datetime import datetime, timedelta
 
 from distutils.log import info
 from django.http import HttpResponseRedirect
@@ -7,14 +10,49 @@ from .models import Notification # Импортируем модели
 from . forms import NotificationForm # Импортируем форму
 
 # from .service import send
-from .tasks import send_reminder_user_on_email
+from .tasks import example_task, send_reminder_on_email
+
+
+logger = logging.getLogger(__name__)
+
+
+
 
 
 
 def home_page(request):
     form = NotificationForm()
     notifications = Notification.objects.all().order_by("-id")
+
+    import random
+    logger.info("set task for %s", notifications)
+    logger.error("ALARM: set task for %s", notifications)
+
+    task_id = send_reminder_on_email((notifications, ))
+
+    logger.info("New task id %s", task_id)
+
+
     return render(request, 'reminder/main.html', {'form': form, 'notifications': notifications})
+
+
+
+# def home_page(request):
+#     form = NotificationForm()
+#     notifications = Notification.objects.all().order_by("-id")
+
+#     import random
+#     reminder_id = random.randint(0, 100)
+#     logger.info("set task for %d", reminder_id)
+#     logger.error("ALARM: set task for %d", reminder_id)
+
+#     next_time = datetime.utcnow() + timedelta(seconds=10)
+#     task_id = example_task.apply_async((reminder_id, ), eta=next_time)
+
+#     logger.info("New task id %s", task_id)
+
+
+#     return render(request, 'reminder/main.html', {'form': form, 'notifications': notifications})
 
 
 
@@ -26,6 +64,9 @@ def create_reminder(request):
         try:
             Notification.objects.create(**form.cleaned_data)
             # return HttpResponseRedirect('http://127.0.0.1:8000/')
+
+            #
+
             return redirect(resolve_url('index'))
         except:
             form.add_error(None, 'Ошибка добавления записи')

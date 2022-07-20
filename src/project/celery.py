@@ -10,6 +10,20 @@ app.autodiscover_tasks()  # celery ищет задачки эти и автом�
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # celery beat tasks
 
 # app.conf.beat_schedule = {

@@ -2,21 +2,32 @@ version: '3.8'
 
 services:
 
-  db:
-    image: 
-
-  web:
+  server:
     build: .
     ports:
-      
-  redis:
-    image: 
-  
-server:
+      - "8002:8000"
+    depends_on:
+      - redis
+    volumes:
+      - ./src:/Reminder_App
+    command: "python ./manage.py runserver 0.0.0.0:8000"
 
+  redis:
+    image: redis:7
+    volumes:
+      - redis_data:/Reminder_App
+
+  celery-worker:
+    build: .
+    depends_on:
+      - redis
+    volumes:
+      - ./src:/Reminder_App
+    command: "celery -A project worker -l info"
 
 
 volumes:
+  redis_data:
 
 
 

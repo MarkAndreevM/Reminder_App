@@ -1,23 +1,41 @@
+from time import sleep
 from django.core.mail import send_mail
 from project.celery import app
 
 from .service import send
 from .models import Notification
 
-@app.task
-def send_reminder_user_on_email(user_email):
-    send(user_email)
+from datetime import datetime
+
+import time
 
 
-@app.task
-def send_beat_email():
-    for i in Notification.objects.all():
-        send_mail(
-            'Уведомление от Reminders',
-            'django_app@mail.ru',
-            [i.user_mail],
-            fail_silently=False,
 
-        )
+# Таска на отправку уведомления пользователю
+
+@app.task(bind=True)
+def send_reminder_on_email(self, notifications):
+
+    while True:
+        for i in notifications:
+            if i.date_notification + i.time_notification == datetime.now():
+                send_mail(
+                    'Уведомление от Reminders',
+                    i.text_reminder,
+                    'django_app@mail.ru',
+                    [i.user_mail],
+                    fail_silently=False,
+
+                 )
+        
+
+
+
+@app.task(bind=True)
+def example_task(self, reminder_id):
+    print(f"I had a work for {reminder_id}")
+
+
+
 
 
