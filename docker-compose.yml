@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+
+  db:
+    image: 
+
+  web:
+    build: .
+    ports:
+      
+  redis:
+    image: 
+  
+server:
+
+
+
+volumes:
+
+
+
+
+
+
+
+
+
+
