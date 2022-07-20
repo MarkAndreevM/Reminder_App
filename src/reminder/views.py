@@ -73,7 +73,7 @@ def send_reminder_on_email(form):
 # ЗАПУС 3 терминала 
 # 1. Django - python manage.py runserver
 # 2. Celery - celery -A project worker -l info     (project - имя проекта основного)
-# 3. 
+# 3. Celery - celery -A project beat -l info
 
 
 

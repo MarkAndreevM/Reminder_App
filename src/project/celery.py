@@ -10,5 +10,16 @@ app.autodiscover_tasks()  # celery ищет задачки эти и автом�
 
 
 
+# celery beat tasks
+
+# app.conf.beat_schedule = {
+#     'send_reminder_user' : {
+#         'task' : 'reminder.tasks.send_beat_email',
+#         'schedule' : crontab()
+#     }
+# }
+
+
+
 
 
