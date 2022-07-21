@@ -27,10 +27,21 @@ def home_page(request):
     logger.info("set task for %s", notifications)
     logger.error("ALARM: set task for %s", notifications)
 
-    send_mail = send_reminder_on_email(notifications)
+    date = [ i["date_notification"].strftime("%Y-%m-%d") for i in Notification.objects.values("date_notification") ]
+    time = [i["time_notification"] for i in Notification.objects.values("time_notification")]
+    
 
-    logger.info("New task id %s", send_mail)
+    if datetime.now > Notification.objects.values("date_notification"):
+        # то... ставим задачу
 
+
+
+
+    # next_time = datetime.utcnow() + timedelta(notifications.date_notification.strftime("%Y-%m-%d") + " " + notifications.time_notification)
+
+    # send_mail = send_reminder_on_email.apply_async((notifications,), eta=next_time)
+
+    # logger.info("New task info %s", send_mail)
 
     return render(request, 'reminder/main.html', {'form': form, 'notifications': notifications})
 
