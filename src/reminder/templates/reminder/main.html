@@ -78,7 +78,7 @@
 
                         <div class="info_reminder">        
                             <h2>{{i.text_reminder}}</h2>
-                            <p>{{i.date_notification}} {{i.time_notification}}</p>
+                            <p>{{i.date_notification}} {{i.time_notification|date:'H:i'}}</p>
                         </div>
                         
                         <div class="wrapper_link_info">
@@ -91,7 +91,7 @@
                             <nav id="todo-list__action_{{ i.id }}" class="todo-list__actions">
                                 
                                 <!-- Изменение уведомления через pop-up (тест, мучения, надежда)-->
-                                <button id="open-popup-1" data-text_reminder="{{i.text_reminder}}" data-user_mail="{{i.user_mail}}" data-date_notification="{{i.date_notification}}" data-time_notification="{{i.time_notification}}" data-id="{{ i.id }}" class="action_edit" value="{{ i.id }}" name="Edit">Edit</button>
+                                <button id="open-popup-1" data-text_reminder="{{i.text_reminder}}" data-user_mail="{{i.user_mail}}" data-date_notification="{{i.date_notification}}" data-time_notification="{{i.time_notification|date:'H:i'}}" data-id="{{ i.id }}" class="action_edit" value="{{ i.id }}" name="Edit">Edit</button>
 
                                 <!-- Изменение уведомления через отдельную страничку (готово) -->
                                 <!-- <a href="" data-id="{{ i.id }}" class="action_edit" value="{{ i.id }}" name="Edit">Edit</a> --> 

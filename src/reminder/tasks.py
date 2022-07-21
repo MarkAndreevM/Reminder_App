@@ -14,20 +14,29 @@ import time
 logger = logging.getLogger(__name__)
 
 
-@app.task(bind=True)
-def send_reminder_on_email(self, notifications):
 
-    print('123')
-    logger.info("New supertask id %s", notifications)
+@app.task(bind=True)
+def example_task(self, reminder_id):
+    print(f"I had a work for {reminder_id}")
+
+
+
+@app.task(bind=True)
+def send_reminder_on_email(self, notifications_id):
+
+    notification = Notification.objects.get(pk=notifications_id)
+    print(notification)
+    logger.info("New supertask id %s", notifications_id)
+
 
     send_mail(
         'Уведомление от Reminders',
-        notifications.text_reminder,
+        notification.text_reminder,
         'django_app@mail.ru',
-        [notifications.user_mail],
+        [notification.user_mail],
         fail_silently=False,
         )
-    print('123')
+    
 
 
 # Таска на отправку уведомления пользователю
@@ -50,11 +59,6 @@ def send_reminder_on_email(self, notifications):
 #                 print('123')
         
 
-
-
-@app.task(bind=True)
-def example_task(self, reminder_id):
-    print(f"I had a work for {reminder_id}")
 
 
 

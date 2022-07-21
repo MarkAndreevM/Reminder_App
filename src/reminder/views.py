@@ -23,25 +23,7 @@ logger = logging.getLogger(__name__)
 def home_page(request):
     form = NotificationForm()
     notifications = Notification.objects.all().order_by("-id")
-
-    logger.info("set task for %s", notifications)
-    logger.error("ALARM: set task for %s", notifications)
-
-    date = [ i["date_notification"].strftime("%Y-%m-%d") for i in Notification.objects.values("date_notification") ]
-    time = [i["time_notification"] for i in Notification.objects.values("time_notification")]
     
-
-    if datetime.now > Notification.objects.values("date_notification"):
-        # то... ставим задачу
-
-
-
-
-    # next_time = datetime.utcnow() + timedelta(notifications.date_notification.strftime("%Y-%m-%d") + " " + notifications.time_notification)
-
-    # send_mail = send_reminder_on_email.apply_async((notifications,), eta=next_time)
-
-    # logger.info("New task info %s", send_mail)
 
     return render(request, 'reminder/main.html', {'form': form, 'notifications': notifications})
 
@@ -68,22 +50,28 @@ def home_page(request):
 
 # Добавление уведомления
 def create_reminder(request):
+
+    # tzname = request.session.get('django_timezone')
+
     form = NotificationForm(request.POST)
     if form.is_valid():
+        
         print(form.cleaned_data)
-        try:
-            Notification.objects.create(**form.cleaned_data)
-            # return HttpResponseRedirect('http://127.0.0.1:8000/')
+        # try:
+        notification = Notification.objects.create(**form.cleaned_data)
+        datatime_notification = datetime.combine(notification.date_notification, notification.time_notification)
 
-            #
+        task_id = send_reminder_on_email.apply_async((notification.id,), eta=datatime_notification)
+        logger.error("New task id %s", task_id)
 
-            return redirect(resolve_url('index'))
-        except:
-            form.add_error(None, 'Ошибка добавления записи')
-            return redirect(resolve_url('index'))
+        return redirect(resolve_url('index'))
+        # except:
+            # form.add_error(None, 'Ошибка добавления записи')
+            # return redirect(resolve_url('index'))
     else:
         form.add_error(None, 'Ошибка добавления записи')
         return redirect(resolve_url('index'))
+    
 
 
 
@@ -113,11 +101,11 @@ def delete_reminder(request, id):
 
 # Отправка уведомления пользовтелю на почту 
 
-def send_reminder_on_email(form):
-    # form.save()
-    # send_reminder_user_on_email.delay(form.instance.email)
-    # return super().form_valid(form)
-    pass
+# def send_reminder_on(form):
+#     # form.save()
+#     # send_reminder_user_on_email.delay(form.instance.email)
+#     # return super().form_valid(form)
+#     pass
 
 
 

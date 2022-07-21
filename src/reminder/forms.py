@@ -51,6 +51,7 @@ class NotificationForm(ModelForm):
                 'placeholder': 'Set Date'
             }),
             "time_notification": TimeInput(attrs={
+                'format': '%H:%M',
                 'class': 'redminer_add_date',
                 'type': 'text',
                 'name': 'time',
