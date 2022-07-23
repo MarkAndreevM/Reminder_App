@@ -11,6 +11,7 @@ from . forms import NotificationForm # Импортируем форму
 
 # from .service import send
 from .tasks import example_task, send_reminder_on_email
+import pytz
 
 
 logger = logging.getLogger(__name__)
@@ -54,18 +55,23 @@ def create_reminder(request):
     form = NotificationForm(request.POST)
     if form.is_valid():
         
-        # print(form.cleaned_data)
-        # try:
-        notification = Notification.objects.create(**form.cleaned_data)
-        datatime_notification = datetime.combine(notification.date_notification, notification.time_notification)
+        print(form.cleaned_data)
+        try:
+            notification = Notification.objects.create(**form.cleaned_data)
 
-        task_id = send_reminder_on_email.apply_async((notification.id,), eta=datatime_notification)
-        logger.error("New task id %s", task_id)
+            datatime_notification = datetime.combine(notification.date_notification, notification.time_notification)
+            timezone = pytz.timezone('Europe/Moscow')
+            aware_datetime = timezone.localize(datatime_notification)
 
-        return redirect(resolve_url('index'))
-        # except:
-            # form.add_error(None, 'Ошибка добавления записи')
-            # return redirect(resolve_url('index'))
+            task_id = send_reminder_on_email.apply_async((notification.id,), eta=aware_datetime)
+            logger.error("New task id %s", task_id)
+
+            return redirect(resolve_url('index'))
+
+        except:
+            form.add_error(None, 'Ошибка добавления записи')
+            return redirect(resolve_url('index'))
+
     else:
         form.add_error(None, 'Ошибка добавления записи')
         return redirect(resolve_url('index'))
