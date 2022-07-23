@@ -261,11 +261,21 @@ h1 {
 
 
 
-
-
 /*Форма изменения уведомления END*/
 
 
 
 
+
+
+/*Уведомлений нет START*/
+
+.empty_reminder{
+    font-size: 40px;
+    color: rgb(220, 226, 181);
+    text-align: center;
+    margin-top: 180px;
+}
+
+/*Уведомлений нет END*/
 

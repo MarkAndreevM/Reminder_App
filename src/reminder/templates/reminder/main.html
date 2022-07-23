@@ -70,48 +70,57 @@
     <main class="main">
         <section class="intro" id="sign-in">
             <div class="wrapper_main">
-                {% block content %}
+                {% if notifications %}
+                    {% block content %}
 
-                    {% for i in notifications %}
+                        {% for i in notifications %}
 
-                    <div class="wrapper_info_reminder">
+                        <div class="wrapper_info_reminder">
 
-                        <div class="info_reminder">        
-                            <h2>{{i.text_reminder}}</h2>
-                            <p>{{i.date_notification}} {{i.time_notification|date:'H:i'}}</p>
-                        </div>
-                        
-                        <div class="wrapper_link_info">
+                            <div class="info_reminder">        
+                                <h2>{{i.text_reminder}}</h2>
+                                <p>{{i.date_notification}} {{i.time_notification|date:'H:i'}}</p>
+                            </div>
+                            
+                            <div class="wrapper_link_info">
 
-                            <button type="submit" data-id="{{ i.id }}" class="todo-list__burger-item">
-                                <img class="arrow_add_remove_reminder" src="static/reminder/img/arrow.svg" alt="arrow">
-                            </button>
+                                <button type="submit" data-id="{{ i.id }}" class="todo-list__burger-item">
+                                    <img class="arrow_add_remove_reminder" src="static/reminder/img/arrow.svg" alt="arrow">
+                                </button>
 
 
-                            <nav id="todo-list__action_{{ i.id }}" class="todo-list__actions">
-                                
-                                <!-- Изменение уведомления через pop-up (тест, мучения, надежда)-->
-                                <button id="open-popup-1" data-text_reminder="{{i.text_reminder}}" data-user_mail="{{i.user_mail}}" data-date_notification="{{i.date_notification}}" data-time_notification="{{i.time_notification|date:'H:i'}}" data-id="{{ i.id }}" class="action_edit" value="{{ i.id }}" name="Edit">Edit</button>
-
-                                <!-- Изменение уведомления через отдельную страничку (готово) -->
-                                <!-- <a href="" data-id="{{ i.id }}" class="action_edit" value="{{ i.id }}" name="Edit">Edit</a> --> 
-
-                                <form action="{% url 'delete_reminder' i.id %}" method="DELETE">
-                                    {% csrf_token %}
-                                    <!-- <button data-id="{{ i.id }}" value="{{ i.id }}" name="Remove" class="action">Remove</button> -->
-                                    <button type="submit" class="action">Remove</button>
-                                </form>
+                                <nav id="todo-list__action_{{ i.id }}" class="todo-list__actions">
                                     
-                            </nav>  
-                                
+                                    <!-- Изменение уведомления через pop-up (тест, мучения, надежда)-->
+                                    <button id="open-popup-1" data-text_reminder="{{i.text_reminder}}" data-user_mail="{{i.user_mail}}" data-date_notification="{{i.date_notification}}" data-time_notification="{{i.time_notification|date:'H:i'}}" data-id="{{ i.id }}" class="action_edit" value="{{ i.id }}" name="Edit">Edit</button>
+
+                                    <!-- Изменение уведомления через отдельную страничку (готово) -->
+                                    <!-- <a href="" data-id="{{ i.id }}" class="action_edit" value="{{ i.id }}" name="Edit">Edit</a> --> 
+
+                                    <form action="{% url 'delete_reminder' i.id %}" method="DELETE">
+                                        {% csrf_token %}
+                                        <!-- <button data-id="{{ i.id }}" value="{{ i.id }}" name="Remove" class="action">Remove</button> -->
+                                        <button type="submit" class="action">Remove</button>
+                                    </form>
+                                        
+                                </nav>  
+                                    
+                            </div>
+
                         </div>
+                        <hr color="black" size="small">
 
-                    </div>
-                    <hr color="black" size="small">
+                        {% endfor %}
 
-                    {% endfor %}
+                    {% endblock %}
+                {% else %}
+                    <h1 class="empty_reminder">
+                        You have no reminders yet!<br>
+                        It's time to <br>
+                        add one
+                    </h1>
+                {% endif %}
 
-                {% endblock %}
             </div>
         </section>
     </main>

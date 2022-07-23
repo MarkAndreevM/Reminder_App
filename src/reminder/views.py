@@ -23,7 +23,7 @@ logger = logging.getLogger(__name__)
 def home_page(request):
     form = NotificationForm()
     notifications = Notification.objects.all().order_by("-id")
-    
+
 
     return render(request, 'reminder/main.html', {'form': form, 'notifications': notifications})
 
@@ -51,12 +51,10 @@ def home_page(request):
 # Добавление уведомления
 def create_reminder(request):
 
-    # tzname = request.session.get('django_timezone')
-
     form = NotificationForm(request.POST)
     if form.is_valid():
         
-        print(form.cleaned_data)
+        # print(form.cleaned_data)
         # try:
         notification = Notification.objects.create(**form.cleaned_data)
         datatime_notification = datetime.combine(notification.date_notification, notification.time_notification)
