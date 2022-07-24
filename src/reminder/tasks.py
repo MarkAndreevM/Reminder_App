@@ -29,6 +29,9 @@ def send_reminder_on_email(self, notifications_id):
         [notification.user_mail],
         fail_silently=False,
         )
+
+    notification.is_sent = True
+    notification.save()
     
 
         

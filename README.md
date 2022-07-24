@@ -7,29 +7,23 @@
 <br>
 
 1. Клонируйте проект к себе в IDE.
-<br>
-<br>
 2. Перейдите в модуль `settings.py` по следующему пути: `/src/project/settings.py`
-<br>
-<br>
    1. Настройте почту, с которой будут отправляться Уведомления (Можете оставить текущую, если к этому моменту она будет работоспособной)
-   <br>
-   <br>
    smtp
-<br>
-`EMAIL_USE_TLS = True` <br>
-`EMAIL_HOST = 'smtp.mail.ru'`  ===> После `smtp` прописываем какую почту используем в качестве SMTP-сервера для Django (в примере mail.ru)  
-`EMAIL_HOST_USER = 'django_app@mail.ru'` ===> Название почты   <br>
-`EMAIL_HOST_PASSWORD = 'mjXPSxbXwy1NQHbM7NYb'`  ===> Прописываем пароль от почты <br>
-`EMAIL_PORT = 587` <br>
-<br>
+   
+      `EMAIL_USE_TLS = True`   
+      `EMAIL_HOST = 'smtp.mail.ru'` ===> После `smtp` прописываем какую почту используем в качестве SMTP-сервера для Django (в примере mail.ru)   
+      `EMAIL_HOST_USER = 'django_app@mail.ru'` ===> Название почты   
+      `EMAIL_HOST_PASSWORD = 'mjXPSxbXwy1NQHbM7NYb'` ===> Прописываем пароль от почты   
+      `EMAIL_PORT = 587`   
+       
+       
    2. Перейдите в модуль `tasks.py` по следующему пути: `/src/reminder/tasks.py`. В функции <b>send_mail()</b> замените имя почты на Вашу почту (или оставьте текущую, если к этому моменту она будет работоспособной)  
    
-<br>
 3. В терминале пропишите команду `docker-compose up` 
-<br>
-<br>
+
+
 4. Откройте Ваш браузер и перейдите по следующему адресу `http://127.0.0.1:8002/`
-<br>
-<br>
+
+
 5. Проект запущен!

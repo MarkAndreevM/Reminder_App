@@ -21,7 +21,7 @@ logger = logging.getLogger(__name__)
 # Главная страница
 def home_page(request):
     form = NotificationForm()
-    notifications = Notification.objects.all().order_by("-id")
+    notifications = Notification.objects.filter(is_sent=False).order_by("-id")
 
 
     return render(request, 'reminder/main.html', {'form': form, 'notifications': notifications})

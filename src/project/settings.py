@@ -124,10 +124,11 @@ STATICFILES_DIRS = [
 
 
 # smtp
+# EMAIL_USE_SSL = True
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.mail.ru'
 EMAIL_HOST_USER = 'django_app1@mail.ru'
-EMAIL_HOST_PASSWORD = 'skittles123'
+EMAIL_HOST_PASSWORD = 'rQYz1D5XbffHMxaYruuw'
 EMAIL_PORT = 587
 
 
