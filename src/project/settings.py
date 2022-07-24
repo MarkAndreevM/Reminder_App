@@ -41,7 +41,6 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    # 'reminder.middleware.TimezoneMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -127,8 +126,8 @@ STATICFILES_DIRS = [
 # smtp
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.mail.ru'
-EMAIL_HOST_USER = 'django_app@mail.ru'
-EMAIL_HOST_PASSWORD = 'mjXPSxbXwy1NQHbM7NYb'
+EMAIL_HOST_USER = 'django_app1@mail.ru'
+EMAIL_HOST_PASSWORD = 'skittles123'
 EMAIL_PORT = 587
 
 

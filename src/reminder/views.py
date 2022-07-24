@@ -10,7 +10,7 @@ from .models import Notification # Импортируем модели
 from . forms import NotificationForm # Импортируем форму
 
 # from .service import send
-from .tasks import example_task, send_reminder_on_email
+from .tasks import send_reminder_on_email
 import pytz
 
 
@@ -18,9 +18,7 @@ logger = logging.getLogger(__name__)
 
 
 
-
-
-
+# Главная страница
 def home_page(request):
     form = NotificationForm()
     notifications = Notification.objects.all().order_by("-id")
@@ -30,32 +28,13 @@ def home_page(request):
 
 
 
-# def home_page(request):
-#     form = NotificationForm()
-#     notifications = Notification.objects.all().order_by("-id")
-
-#     import random
-#     reminder_id = random.randint(0, 100)
-#     logger.info("set task for %d", reminder_id)
-#     logger.error("ALARM: set task for %d", reminder_id)
-
-#     next_time = datetime.utcnow() + timedelta(seconds=10)
-#     task_id = example_task.apply_async((reminder_id, ), eta=next_time)
-
-#     logger.info("New task id %s", task_id)
-
-
-#     return render(request, 'reminder/main.html', {'form': form, 'notifications': notifications})
-
-
-
 # Добавление уведомления
 def create_reminder(request):
 
     form = NotificationForm(request.POST)
     if form.is_valid():
-        
-        print(form.cleaned_data)
+        # print(form.cleaned_data)
+
         try:
             notification = Notification.objects.create(**form.cleaned_data)
 
